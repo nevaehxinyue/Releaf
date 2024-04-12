@@ -7,7 +7,8 @@
 - `Tailwind CSS` is added and configured
 - `React Navigation` library is added
 <br>
-- after `git clone`, use `npm install` to install all the dependencies
+
+- after `git clone` and `cd releaf`, use `npm install` to install all the dependencies
 
 
 <br>
