@@ -2,18 +2,29 @@
 <br>
 <br>
 
-# Project Initialization Description
+### 04/16/2024 description
 - `gitignore` file is added
 - `Tailwind CSS` is added and configured
-- `React Navigation` library is added
-<br>
-
-- after `git clone` and `cd releaf`, use `npm install` to install all the dependencies
-
 
 <br>
-<br>
 
+- use following command to clone the project
+```bash
+git clone https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons.git
+```
+
+- use following command to install all the dependencies
+```bash
+cd Group-Happy-Herons-Project
+npm install
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 Welcome to the project! I look forward to seeing your progress and your final results this semester!
 
