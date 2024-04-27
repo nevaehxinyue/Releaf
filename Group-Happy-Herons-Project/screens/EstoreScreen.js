@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Estore = () => {
+const EstoreScreen = () => {
   return (
     <View>
       <Text>Estore</Text>
@@ -9,4 +9,4 @@ const Estore = () => {
   )
 }
 
-export default Estore
+export default EstoreScreen
