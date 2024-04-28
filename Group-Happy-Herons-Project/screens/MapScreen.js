@@ -225,19 +225,69 @@ const MapScreen = () => {
     });
   };
 
+  // toggle between clothing bins and charity donations
+  const [selectedOption, setSelectedOption] = useState("ClothingBins");
+
+  const toggleOption = () => {
+    setSelectedOption(
+      selectedOption === "ClothingBins" ? "Donations" : "ClothingBins"
+    );
+  };
+
+  const showLocations = () => {
+    return selectedOption === "ClothingBins"
+      ? showingLocationsOfClothingBins()
+      : showLocationsOfDonations();
+  };
+
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 mt-5">
+      {/* toggle button */}
+      <View className="flex-row items-center justify-center mt-8 mb-8 rounded-lg shadow-xl">
+        <TouchableOpacity
+          onPress={toggleOption}
+          className={`rounded-lg px-2 py-4 w-[150px] items-center justify-center ${
+            selectedOption === "ClothingBins" ? "bg-[#FBF6EE]" : ""
+          }`}
+        >
+          <Text
+            className={`font-bold ${
+              selectedOption === "ClothingBins" ? "text-[#233B29]" : ""
+            }`}
+          >
+            Clothing Bins
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={toggleOption}
+          className={`rounded-lg px-2 py-4 w-[150px] items-center justify-center ${
+            selectedOption === "ClothingBins" ? "" : "bg-[#FBF6EE]"
+          }`}
+        >
+          <Text
+            className={`font-bold ${
+              selectedOption === "ClothingBins" ? "" : "text-[#233B29]"
+            }`}
+          >
+            Charity Donations
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* map display */}
       <MapView
         className="w-full h-[500px]"
         provider={PROVIDER_GOOGLE}
         region={region}
         onRegionChangeComplete={onRegionChange}
       >
-        {showingLocationsOfClothingBins()}
-        {showLocationsOfDonations()}
+        {/* {showingLocationsOfClothingBins()}
+        {showLocationsOfDonations()} */}
+        {showLocations()}
       </MapView>
 
-      <View className="items-start justify-center space-y-2 mt-16">
+      {/* notes for the user */}
+      <View className="items-start justify-center space-y-2">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2">
           <Feather name="info" size={24} color="black" />
           <Text className="font-semibold text-[#233B29]">

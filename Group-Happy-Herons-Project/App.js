@@ -26,8 +26,8 @@ export default function App() {
             tabBarLabel:'Home',
             tabBarIcon: ({ color, size }) => (<Entypo name="home" size={size} color={color} />)
           }} ></Tab.Screen>
-          <Tab.Screen name="RcyMap" component={MapScreen} options={{
-            tabBarLabel:'RcyleMap',
+          <Tab.Screen name="RecycleMap" component={MapScreen} options={{
+            tabBarLabel:'RecycleMap',
             tabBarIcon: ({ color, size }) => (<FontAwesome5 name="map-marker-alt" size={size} color={color} />),
             headerShown: false
           }}></Tab.Screen>
@@ -36,8 +36,8 @@ export default function App() {
             tabBarLabel:'',
             tabBarIcon: ({ color, size }) => (<ImgRecogIcon color='white' size={30} />)
           }}></Tab.Screen>
-          <Tab.Screen name="RcyPolicy" component={BinScreen} options={{
-            tabBarLabel:'RcyPolicy',
+          <Tab.Screen name="RecyclePolicy" component={BinScreen} options={{
+            tabBarLabel:'RecyclePolicy',
             tabBarIcon: ({ color, size }) => (<Entypo name="trash" size={size} color={color} />)
           }}></Tab.Screen>
           
