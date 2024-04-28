@@ -41,3 +41,5 @@ export async function getWasteBinData() {
     throw error; // Rethrow after logging or handle as needed
   }
 }
+
+module.exports.getWasteBinData = getWasteBinData; // Exporting for use in other files
