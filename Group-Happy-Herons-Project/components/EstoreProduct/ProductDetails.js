@@ -10,7 +10,7 @@ import {
   Linking,
 } from "react-native";
 
-import { getProduct } from "../services/ProductsService.js";
+import { getProduct } from "./ProductsService.js";
 
 export function ProductDetails({ route }) {
   const { productId } = route.params;

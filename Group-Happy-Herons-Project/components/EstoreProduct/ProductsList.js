@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
-import { Product } from "../components/Product.js";
-import { getProducts } from "../services/ProductsService.js";
+import { Product } from "./Product.js";
+import { getProducts } from "./ProductsService.js";
 
 export function ProductsList({ navigation }) {
   function renderProduct({ item: product }) {

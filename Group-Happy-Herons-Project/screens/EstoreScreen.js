@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { ProductsList } from "./ProductsList.js";
-import { ProductDetails } from "./ProductDetails.js";
+import { ProductsList } from "../components/EstoreProduct/ProductsList.js";
+import { ProductDetails } from "../components/EstoreProduct/ProductDetails.js";
 
 const Stack = createNativeStackNavigator();
 
