@@ -28,7 +28,8 @@ export default function App() {
           }} ></Tab.Screen>
           <Tab.Screen name="RcyMap" component={MapScreen} options={{
             tabBarLabel:'RcyleMap',
-            tabBarIcon: ({ color, size }) => (<FontAwesome5 name="map-marker-alt" size={size} color={color} />)
+            tabBarIcon: ({ color, size }) => (<FontAwesome5 name="map-marker-alt" size={size} color={color} />),
+            headerShown: false
           }}></Tab.Screen>
           
           <Tab.Screen name="Chuck it in the bin" component={ImgRecogScreen} options={{
