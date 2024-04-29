@@ -9,9 +9,22 @@ import { Entypo } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import ImgRecogIcon from "./components/ImgRecogIcon";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./screens/HomeScreen";
+import BinScreen from "./screens/BinScreen";
+import ImgRecogScreen from "./screens/ImgRecogScreen";
+import MapScreen from "./screens/MapScreen";
+import EstoreScreen from "./screens/EstoreScreen";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import ImgRecogIcon from "./components/ImgRecogIcon";
+import { useModel } from "./hooks/useModel";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
+  const model = useModel();
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -39,20 +52,20 @@ export default function App() {
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="map-marker-alt" size={size} color={color} />
             ),
-            headerShown: false
+            headerShown: false,
           }}
         ></Tab.Screen>
 
         <Tab.Screen
           name="Chuck it in the bin"
-          component={ImgRecogScreen}
+          children={() => <ImgRecogScreen model={model} />}
           options={{
             tabBarLabel: "",
             tabBarIcon: ({ color, size }) => (
               <ImgRecogIcon color="white" size={30} />
             ),
           }}
-        ></Tab.Screen>
+        />
         <Tab.Screen
           name="RecyclePolicy"
           component={BinScreen}

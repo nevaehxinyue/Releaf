@@ -13,7 +13,7 @@ app.use(cors());
 // connect to database
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.DB_url);
+    await mongoose.connect(process.env.DB_URL);
     console.log("MongoDB database connection established successfully");
   } catch (err) {
     console.error("Failed to connect to the database:", err.message);
