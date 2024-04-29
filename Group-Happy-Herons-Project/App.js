@@ -9,17 +9,6 @@ import { Entypo } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import ImgRecogIcon from "./components/ImgRecogIcon";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "./screens/HomeScreen";
-import BinScreen from "./screens/BinScreen";
-import ImgRecogScreen from "./screens/ImgRecogScreen";
-import MapScreen from "./screens/MapScreen";
-import EstoreScreen from "./screens/EstoreScreen";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome6 } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import ImgRecogIcon from "./components/ImgRecogIcon";
 import { useModel } from "./hooks/useModel";
 
 export default function App() {

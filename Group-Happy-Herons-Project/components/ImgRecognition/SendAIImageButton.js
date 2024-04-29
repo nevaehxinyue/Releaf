@@ -3,6 +3,7 @@ import { Alert } from "react-native";
 import Button from "./Button";
 import axios from "axios";
 import { BASEURL } from "@env";
+import sendImageToOpenAI from "../../api/gpt4Api";
 
 function SendAIImageButton({
   name,
@@ -16,17 +17,20 @@ function SendAIImageButton({
     }
     setIsPredicting(true);
     try {
-      const result = await axios.post(
-        `${BASEURL}/send-image`,
-        { image: imageBase64 },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const message = result.data.choices[0].message.content;
-      console.log(result.data);
+      // const result = await axios.post(
+      //   `${BASEURL}/send-image`,
+      //   { image: imageBase64 },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+
+      const openAIResponse = await sendImageToOpenAI(imageBase64);
+      
+      const message = openAIResponse.choices[0].message.content;
+     
       setResponse(message);
       setIsPredicting(false);
     } catch (error) {

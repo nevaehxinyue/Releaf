@@ -1,6 +1,6 @@
-const serverIP = "172.23.0.232"; // This should actually be in a config file
-const serverPort = "8000"; // This should actually be in a config file
-const serverUrl = `http://${serverIP}:${serverPort}`;
+// const serverIP = "34.224.23.153"; // This should actually be in a config file
+// const serverPort = "8001"; // This should actually be in a config file
+const serverUrl = process.env.SERVER_URL;
 
 async function fetchData(endpoint) {
   const response = await fetch(`${serverUrl}${endpoint}`);
