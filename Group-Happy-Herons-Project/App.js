@@ -32,13 +32,14 @@ export default function App() {
           }}
         ></Tab.Screen>
         <Tab.Screen
-          name="RcyMap"
+          name="RecycleMap"
           component={MapScreen}
           options={{
-            tabBarLabel: "RcyleMap",
+            tabBarLabel: "RecycleMap",
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="map-marker-alt" size={size} color={color} />
             ),
+            headerShown: false
           }}
         ></Tab.Screen>
 
@@ -53,10 +54,10 @@ export default function App() {
           }}
         ></Tab.Screen>
         <Tab.Screen
-          name="RcyPolicy"
+          name="RecyclePolicy"
           component={BinScreen}
           options={{
-            tabBarLabel: "RcyPolicy",
+            tabBarLabel: "RecyclePolicy",
             tabBarIcon: ({ color, size }) => (
               <Entypo name="trash" size={size} color={color} />
             ),
