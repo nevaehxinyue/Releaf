@@ -1,15 +1,14 @@
-const express = require("express");
-const axios = require("axios");
-const router = express.Router();
-require('dotenv').config();
+import axios from "axios";
 
-router.post("/", async (req, res) => {
-  const { image } = req.body;
-  console.log(image);
-  
-  console.log(process.env.OPEN_AI_API_KEY)
-  if (!image) {
-    return res.send("No image provided").status(400);
+
+// const express = require("express");
+// const axios = require("axios");
+// const router = express.Router();
+// require('dotenv').config();
+
+async function sendImageToOpenAI(imageBase64) {
+  if (!imageBase64) {
+    throw new Error("No image provided");
   };
 
   const headers = {
@@ -30,7 +29,7 @@ router.post("/", async (req, res) => {
           {
             type: "image_url",
             image_url: {
-                "url": `data:image/jpeg;base64,${image}`,
+                "url": `data:image/jpeg;base64,${imageBase64}`,
                 "detail": "low"
             }
           }
@@ -42,15 +41,16 @@ router.post("/", async (req, res) => {
 
   try {
     const response = await axios.post('https://api.openai.com/v1/chat/completions', payload, { headers });
-    res.json(response.data);
+    return response.data;
     
   } catch (error) {
     console.log(error)
     console.log('Error communicating with openAI', error.message);
-    res.status(500).json({ error: error.message, message: "Failed to process the image with Open AI."})
+    throw error;
     
   };
 
-});
+};
 
-module.exports = router;
+export default sendImageToOpenAI;
+
