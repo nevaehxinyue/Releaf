@@ -13,7 +13,7 @@ app.use(cors());
 // connect to database
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.DB_url);
+    await mongoose.connect(process.env.DB_URL);
     console.log("MongoDB database connection established successfully");
   } catch (err) {
     console.error("Failed to connect to the database:", err.message);
@@ -22,7 +22,7 @@ async function connectToDatabase() {
 
 // Server listening
 function startServer() {
-  const PORT = process.env.DB_PORT || 8000;
+  const PORT = process.env.DB_PORT || 8001;
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
