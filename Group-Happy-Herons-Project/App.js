@@ -12,9 +12,8 @@ import ImgRecogIcon from "./components/ImgRecogIcon";
 import { useModel } from "./hooks/useModel";
 
 export default function App() {
-  const model = useModel();
-
   const Tab = createBottomTabNavigator();
+  const model = useModel();
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -44,7 +43,6 @@ export default function App() {
             ),
           }}
         ></Tab.Screen>
-
         <Tab.Screen
           name="Chuck it in the bin"
           children={() => <ImgRecogScreen model={model} />}
