@@ -88,7 +88,7 @@ function ImgRecogScreen({ model }) {
   );
 
   return (
-    <View style={styles.fullscreen}>
+    <View style={styles.fullscreen}>  
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
