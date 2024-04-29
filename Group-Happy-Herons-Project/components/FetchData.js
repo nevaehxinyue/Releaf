@@ -1,6 +1,6 @@
 import { SERVER_URL } from "@env";
 
-async function fetchData(endpoint) {
+async function FetchData(endpoint) {
   const response = await fetch(`${SERVER_URL}${endpoint}`);
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
@@ -19,7 +19,7 @@ export async function getWasteBinData() {
       "/rubbish/false",
     ];
 
-    const requests = endpoints.map((endpoint) => fetchData(endpoint));
+    const requests = endpoints.map((endpoint) => FetchData(endpoint));
     const [
       foodYesData,
       foodNoData,

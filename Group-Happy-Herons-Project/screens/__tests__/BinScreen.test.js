@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import BinScreen from "../BinScreen";
-import { getWasteBinData } from "../../api/fetchData";
+import { getWasteBinData } from "../../components/FetchData";
 
 // Mock the getWasteBinData function
-jest.mock("../../api/fetchData", () => ({
+jest.mock("../../components/FetchData", () => ({
   getWasteBinData: jest.fn(),
 }));
 
