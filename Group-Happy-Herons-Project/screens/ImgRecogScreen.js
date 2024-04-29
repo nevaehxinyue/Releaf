@@ -5,19 +5,19 @@ import {
   ScrollView,
   Image,
   Switch,
+  Button,
 } from "react-native";
-
+import { useIsFocused } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
 import { useState, useEffect } from "react";
 import ImagePicker from "../components/ImgRecognition/ImagePicker";
-import { useModel } from "../hooks/useModel";
 import { predictImage } from "../util/predict";
 import SendAIImageButton from "../components/ImgRecognition/SendAIImageButton";
 import { NetworkSimulator } from "../components/ImgRecognition/NetworkSimulator";
 import LoadingOverlay from "../components/ImgRecognition/ui/LoadingOverlay";
 import React from "react";
 
-function ImgRecogScreen() {
+function ImgRecogScreen({ model }) {
   const [imageUri, setImageUri] = useState("");
   const [imageBase, setImageBase] = useState("");
   const [prediction, setPrediction] = useState(null);
@@ -25,7 +25,7 @@ function ImgRecogScreen() {
   const [isConnected, setIsConnected] = useState(false);
   const [isPredicting, setIsPredicting] = useState(false);
 
-  const model = useModel();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
@@ -35,24 +35,47 @@ function ImgRecogScreen() {
     return () => unsubscribe();
   }, []);
 
-  async function takeImageHandler(imageUri, imageBase) {
+  useEffect(() => {
+    if (!isFocused) {
+      clearStates();
+    }
+  }, [isFocused]);
+
+  const clearStates = () => {
+    setImageUri("");
+    setImageBase("");
+    setPrediction(null);
+    setResponse("");
+    imagePreview = "";
+  };
+
+  function takeImageHandler(imageUri, imageBase) {
     setImageUri(imageUri);
     setImageBase(imageBase);
-    setIsPredicting(true);
-    try {
-      if (!isConnected) {
-        const predictionRC = await predictImage(model, imageUri, setPrediction);
-        console.log(predictionRC);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    setIsPredicting(false);
   }
 
   function clearPredictionHandler() {
     setPrediction(null);
     setResponse("");
+  }
+
+  async function handlePredicting() {
+    if (!imageUri) {
+      Alert.alert("Error", "Please pick an image before submitting.");
+      return;
+    }
+    setIsPredicting(true);
+    try {
+      const predictionResult = await predictImage(
+        model,
+        imageUri,
+        setPrediction
+      );
+    } catch (error) {
+      Alert.alert("Error", "Failed to make prediction.");
+      console.error(error);
+    }
+    setIsPredicting(false);
   }
 
   let imagePreview = "";
@@ -65,10 +88,10 @@ function ImgRecogScreen() {
   );
 
   return (
-    <View style={styles.fullscreen}>
+    <View style={styles.fullscreen}>  
       <ScrollView
         style={styles.container}
-        contentContainerStyle={styles.contentContainer} // Adjust content layout here
+        contentContainerStyle={styles.contentContainer}
       >
         <View style={styles.viewContainer}>
           {imageUri ? (
@@ -84,12 +107,18 @@ function ImgRecogScreen() {
             onClearPrediction={clearPredictionHandler}
           />
 
-          {isConnected && (
+          {isConnected ? (
             <SendAIImageButton
               name="submit"
               imageBase64={imageBase}
               setResponse={setResponse}
               setIsPredicting={setIsPredicting}
+            />
+          ) : (
+            <Button
+              title="Submit"
+              onPress={handlePredicting}
+              disabled={isPredicting}
             />
           )}
         </View>
@@ -102,10 +131,7 @@ function ImgRecogScreen() {
 
         <NetworkSimulator onNetworkChange={setIsConnected} />
       </ScrollView>
-
-      {isPredicting && (
-        <LoadingOverlay style={styles.overlay} /> // This will be positioned over your ScrollView content
-      )}
+      {isPredicting && <LoadingOverlay style={styles.overlay} />}
     </View>
   );
 }

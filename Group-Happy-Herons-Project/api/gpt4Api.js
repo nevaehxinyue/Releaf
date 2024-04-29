@@ -1,4 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
+
+
+// const express = require("express");
+// const axios = require("axios");
+// const router = express.Router();
 // require('dotenv').config();
 
 async function sendImageToOpenAI(imageBase64) {

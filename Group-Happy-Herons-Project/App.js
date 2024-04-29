@@ -12,13 +12,15 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import ImgRecogIcon from './components/ImgRecogIcon';
 import 'react-native-gesture-handler';
 import OnboardingScreen from './screens/OnboardingScreen';
+import { useModel } from "./hooks/useModel";
 
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
 
+
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -30,8 +32,8 @@ export default function App() {
       );
   
 };
-
 function AppNavigator() {
+  const model = useModel();
   return (
     <Tab.Navigator
     initialRouteName='Home'
@@ -48,7 +50,7 @@ function AppNavigator() {
           tabBarIcon: ({ color, size }) => (<FontAwesome5 name="map-marker-alt" size={size} color={color} />)
         }}></Tab.Screen>
         
-        <Tab.Screen name="Chuck it in the bin" component={ImgRecogScreen} options={{
+        <Tab.Screen name="Chuck it in the bin" children={() => <ImgRecogScreen model={model}/>} options={{
           tabBarLabel:'',
           tabBarIcon: ({ color, size }) => (<ImgRecogIcon color='white' size={30} />)
         }}></Tab.Screen>

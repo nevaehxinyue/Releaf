@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
-console.log(process.env.DB_url);
+console.log(process.env.DB_URL);
 
 // const dotenv = require("dotenv");
 // dotenv.config();
