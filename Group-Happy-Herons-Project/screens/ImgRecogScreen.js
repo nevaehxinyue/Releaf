@@ -9,12 +9,12 @@ import {
 
 import NetInfo from "@react-native-community/netinfo";
 import { useState, useEffect } from "react";
-import ImagePicker from "../components/ImagePicker";
+import ImagePicker from "../components/ImgRecognition/ImagePicker";
 import { useModel } from "../hooks/useModel";
 import { predictImage } from "../util/predict";
-import SendAIImageButton from "../components/SendAIImageButton";
-import { NetworkSimulator } from "../components/NetworkSimulator";
-import LoadingOverlay from "../components/ui/LoadingOverlay";
+import SendAIImageButton from "../components/ImgRecognition/SendAIImageButton";
+import { NetworkSimulator } from "../components/ImgRecognition/NetworkSimulator";
+import LoadingOverlay from "../components/ImgRecognition/ui/LoadingOverlay";
 import React from "react";
 
 function ImgRecogScreen() {
