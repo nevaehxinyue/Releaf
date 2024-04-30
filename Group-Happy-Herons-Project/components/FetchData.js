@@ -1,7 +1,9 @@
-import { SERVER_URL } from "@env";
+// const serverIP = "34.224.23.153"; // This should actually be in a config file
+// const serverPort = "8001"; // This should actually be in a config file
+const serverUrl = process.env.SERVER_URL;
 
 async function FetchData(endpoint) {
-  const response = await fetch(`${SERVER_URL}${endpoint}`);
+  const response = await fetch(`${serverUrl}${endpoint}`);
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
   }
