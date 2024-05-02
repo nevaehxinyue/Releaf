@@ -3,17 +3,13 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Image,
-  Switch,
-  Button,
+  SafeAreaView,
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
 import { useState, useEffect } from "react";
-import ImagePicker from "../components/ImgRecognition/ImagePicker";
 import { predictImage } from "../util/predict";
 import SendAIImageButton from "../components/ImgRecognition/SendAIImageButton";
-import { NetworkSimulator } from "../components/ImgRecognition/NetworkSimulator";
 import LoadingOverlay from "../components/ImgRecognition/ui/LoadingOverlay";
 import React from "react";
 import Header from "../components/ImgRecognition/Header";
@@ -27,7 +23,6 @@ function ImgRecogScreen({ model }) {
   const [response, setResponse] = useState("");
   const [isConnected, setIsConnected] = useState(false);
   const [isPredicting, setIsPredicting] = useState(false);
-
 
   const isFocused = useIsFocused();
 
@@ -82,36 +77,32 @@ function ImgRecogScreen({ model }) {
     setIsPredicting(false);
   }
 
-  let imagePreview = "";
-
-  imagePreview = (
-    <>
-      <Image
-        className="w-[200] h-[200] object-contain"
-        source={{ uri: imageUri }}
-      />
-      <Text>{prediction}</Text>
-    </>
-  );
-
   return (
-    <ScrollView
-      className="flex-1 bg-[#FBF6EE]"
+    <SafeAreaView className="flex-1 bg-[#FBF6EE]">
+      <ScrollView className="flex-grow">
+        {/* //Header */}
+        <Header />
+        {/* //Image upload options and preview box */}
+        <View className="flex-1 items-center justify-center top-10">
+          <UploadOptions
+            onTakeImage={takeImageHandler}
+            onClearPrediction={clearPredictionHandler}
+            onNetworkChange={setIsConnected}
+          />
+          <ImagePreview imageUri={imageUri} />
+          <View className="w-[230] flex-1 items-end justify-end top-4 ">
+          <SendAIImageButton
+            imageBase64={imageBase}
+            setResponse={setResponse}
+            isPredicting={isPredicting}
+            setIsPredicting={setIsPredicting}
+            onPress={handlePredicting}
+          />
+        </View>
+        </View>
+        {/* //Submit button */}
+        
 
-      // style={styles.container}
-      // contentContainerStyle={styles.contentContainer}
-    >
-      <Header />
-      {/* //ImagePicker */}
-
-      <UploadOptions onTakeImage={takeImageHandler} onClearPrediction={clearPredictionHandler} />
-
-        {/* <ImagePicker
-          onTakeImage={takeImageHandler}
-          onClearPrediction={clearPredictionHandler}
-        /> */}
-   
-        <ImagePreview imageUri={imageUri} />
         {isPredicting ? (
           <Text>Please Waiting~ It is Recognizing...🧐</Text>
         ) : null}
@@ -119,30 +110,15 @@ function ImgRecogScreen({ model }) {
         <Text>{prediction}</Text>
 
         {isConnected ? (
-          <SendAIImageButton
-            name="submit"
-            imageBase64={imageBase}
-            setResponse={setResponse}
-            setIsPredicting={setIsPredicting}
-          />
-        ) : (
-          <Button
-            title="Submit"
-            onPress={handlePredicting}
-            disabled={isPredicting}
-          />
-        )}
- 
+          <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
+            {response ? <Text>{response}</Text> : null}
+          </View>
+        ) : null}
 
-      {isConnected ? (
-        <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
-          {response ? <Text>{response}</Text> : null}
-        </View>
-      ) : null}
-
-      <NetworkSimulator onNetworkChange={setIsConnected} />
-      {isPredicting && <LoadingOverlay style={styles.overlay} />}
-    </ScrollView>
+        {/* <NetworkSimulator onNetworkChange={setIsConnected} /> */}
+        {isPredicting && <LoadingOverlay style={styles.overlay} />}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

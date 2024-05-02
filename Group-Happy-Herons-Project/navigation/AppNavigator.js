@@ -9,10 +9,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { useModel } from "../hooks/useModel";
 import ImgRecogIcon from "../components/ImgRecogIcon";
 import "react-native-gesture-handler";
-import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ImgRecogStackNavigator from "./ImgRecogStackNavigator";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 
 const Tab = createBottomTabNavigator();
