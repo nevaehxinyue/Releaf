@@ -1,5 +1,5 @@
 module.exports = {
-  preset: "react-native",
+  preset: "jest-expo",
   transform: {
     "^.+\\.[tj]sx?$": ["babel-jest", { configFile: "./babel.config.js" }],
   },
