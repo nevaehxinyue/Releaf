@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import LottieView from "lottie-react-native";
-import { getWasteBinData } from "../api/fetchData.js";
+import { getWasteBinData } from "../components/FetchData.js";
 
 function BinScreen() {
   const [selectedBin, setSelectedBin] = useState(null);
