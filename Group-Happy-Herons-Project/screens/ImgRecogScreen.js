@@ -16,6 +16,9 @@ import SendAIImageButton from "../components/ImgRecognition/SendAIImageButton";
 import { NetworkSimulator } from "../components/ImgRecognition/NetworkSimulator";
 import LoadingOverlay from "../components/ImgRecognition/ui/LoadingOverlay";
 import React from "react";
+import Header from "../components/ImgRecognition/Header";
+import ImagePreview from "../components/ImgRecognition/ImagePreview";
+import UploadOptions from "../components/ImgRecognition/UploadOptions";
 
 function ImgRecogScreen({ model }) {
   const [imageUri, setImageUri] = useState("");
@@ -24,6 +27,7 @@ function ImgRecogScreen({ model }) {
   const [response, setResponse] = useState("");
   const [isConnected, setIsConnected] = useState(false);
   const [isPredicting, setIsPredicting] = useState(false);
+
 
   const isFocused = useIsFocused();
 
@@ -82,57 +86,63 @@ function ImgRecogScreen({ model }) {
 
   imagePreview = (
     <>
-      <Image style={styles.image} source={{ uri: imageUri }} />
+      <Image
+        className="w-[200] h-[200] object-contain"
+        source={{ uri: imageUri }}
+      />
       <Text>{prediction}</Text>
     </>
   );
 
   return (
-    <View style={styles.fullscreen}>  
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.viewContainer}>
-          {imageUri ? (
-            <View style={styles.imagePreview}>{imagePreview}</View>
-          ) : null}
+    <ScrollView
+      className="flex-1 bg-[#FBF6EE]"
 
-          {isPredicting ? (
-            <Text>Please Waiting~ It is Recognizing...🧐</Text>
-          ) : null}
+      // style={styles.container}
+      // contentContainerStyle={styles.contentContainer}
+    >
+      <Header />
+      {/* //ImagePicker */}
 
-          <ImagePicker
-            onTakeImage={takeImageHandler}
-            onClearPrediction={clearPredictionHandler}
-          />
+      <UploadOptions onTakeImage={takeImageHandler} onClearPrediction={clearPredictionHandler} />
 
-          {isConnected ? (
-            <SendAIImageButton
-              name="submit"
-              imageBase64={imageBase}
-              setResponse={setResponse}
-              setIsPredicting={setIsPredicting}
-            />
-          ) : (
-            <Button
-              title="Submit"
-              onPress={handlePredicting}
-              disabled={isPredicting}
-            />
-          )}
-        </View>
-
-        {isConnected ? (
-          <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
-            {response ? <Text>{response}</Text> : null}
-          </View>
+        {/* <ImagePicker
+          onTakeImage={takeImageHandler}
+          onClearPrediction={clearPredictionHandler}
+        /> */}
+   
+        <ImagePreview imageUri={imageUri} />
+        {isPredicting ? (
+          <Text>Please Waiting~ It is Recognizing...🧐</Text>
         ) : null}
 
-        <NetworkSimulator onNetworkChange={setIsConnected} />
-      </ScrollView>
+        <Text>{prediction}</Text>
+
+        {isConnected ? (
+          <SendAIImageButton
+            name="submit"
+            imageBase64={imageBase}
+            setResponse={setResponse}
+            setIsPredicting={setIsPredicting}
+          />
+        ) : (
+          <Button
+            title="Submit"
+            onPress={handlePredicting}
+            disabled={isPredicting}
+          />
+        )}
+ 
+
+      {isConnected ? (
+        <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
+          {response ? <Text>{response}</Text> : null}
+        </View>
+      ) : null}
+
+      <NetworkSimulator onNetworkChange={setIsConnected} />
       {isPredicting && <LoadingOverlay style={styles.overlay} />}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -141,6 +151,7 @@ export default ImgRecogScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#FBF6EE",
   },
   contentContainer: {
     flexGrow: 1,

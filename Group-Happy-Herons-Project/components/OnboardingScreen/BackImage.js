@@ -23,22 +23,24 @@ function BackImage({ index, animationValue, width }) {
   }, [animationValue]);
 
   return (
-    <Animated.Image
-      source={BackgroundImages[index].image}
-      style={[
-        {
-          width: width,
-          height: width,
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        },
-        maskStyle,
-      ]}
-      resizeMode="cover"
-    />
+    <Animated.View style={{ width: width, height: (4 / 5) * width, overflow: "hidden" }}>
+      <Animated.Image
+        source={BackgroundImages[index].image}
+        style={[
+          {
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          },
+          maskStyle,
+        ]}
+        resizeMode="cover"
+      />
+    </Animated.View>
   );
 }
 

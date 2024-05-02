@@ -1,5 +1,4 @@
-import { Alert, Button, StyleSheet, TextInput, View } from "react-native";
-
+import { Alert, Text, TouchableHighlight, View } from "react-native";
 import {
   launchCameraAsync,
   launchImageLibraryAsync,
@@ -7,6 +6,7 @@ import {
   useMediaLibraryPermissions,
   PermissionStatus,
 } from "expo-image-picker";
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { useState } from "react";
 
@@ -87,42 +87,17 @@ function ImagePicker({ onTakeImage, onClearPrediction }) {
   }
 
   return (
-    <View>
-      <View style={styles.selectionContainer}>
-        {/* <OutlinedButton icon="camera" onPress={takeImageHandler}>
-          Camera
-        </OutlinedButton>
-        <OutlinedButton icon="albums" onPress={pickImageHandler}>
-          Upload
-        </OutlinedButton> */}
-
-        <Button title="Camera" onPress={takeImageHandler} />
-        <Button title="Library" onPress={pickImageHandler} />
-      </View>
+    <View className="flex-row justify-start">
+      <TouchableHighlight onPress={takeImageHandler}>
+        <Text>Camera</Text>
+       
+        </TouchableHighlight>
+        <TouchableHighlight onPress={pickImageHandler}>
+          <Text>Library</Text>
+        </TouchableHighlight>
     </View>
   );
 }
 
 export default ImagePicker;
-const styles = StyleSheet.create({
-  selectionContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 10,
-  },
-  buttons: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  selectedButton: {
-    backgroundColor: "#868194",
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginVertical: 10,
-    borderRadius: 5,
-  },
-});
+
