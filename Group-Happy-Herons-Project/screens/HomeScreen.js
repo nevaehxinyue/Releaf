@@ -23,11 +23,11 @@ const HomeScreen = ({ navigation }) => {
           source={HomePageImages["robot"]}
         />
         <TouchableOpacity
-          className="w-[170] bg-[#C6B6FB] h-[33] p-2 rounded-3xl items-center justify-center left-24 top-[90]"
+          className="w-[120] bg-[#C6B6FB] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[90]"
           onPress={() => navigation.navigate("Mr.Bin")}
         >
-          <Text className=" text-xs font-semibold">
-            Mr.Bin AI Bot
+          <Text className=" text-[18px] font-bold">
+            Ms.Bin
           </Text>
         </TouchableOpacity>
       </View>
@@ -40,10 +40,10 @@ const HomeScreen = ({ navigation }) => {
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("RecycleMap")}
-          className="w-[240] h-[33] bg-[#D9EEF2] p-2 rounded-3xl items-center justify-center top-[120] right-2"
+          className="w-[120] h-[35] bg-[#D9EEF2] p-2 rounded-3xl items-center justify-center top-[120] right-12"
         >
-          <Text className="text-xs font-semibold">
-            Clothing Recycle & Donation Map
+          <Text className="text-[18px] font-bold">
+            Mr.Map
           </Text>
         </TouchableOpacity>
       </View>
@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
           style={{ fontFamily: "LobsterTwo-Italic" }}
           className="text-[#233B29] font-extrabold text-2xl"
         >
-          Together, we can explore{" "}
+          There you go{" "}
         </Text>
       </View>
 
@@ -66,9 +66,9 @@ const HomeScreen = ({ navigation }) => {
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("RecyclePolicy")}
-          className="w-[170] bg-[#C3F7D2] h-[33] p-2 rounded-3xl items-center justify-center left-24 top-[10]"
+          className="w-[150] bg-[#C3F7D2] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[10]"
         >
-          <Text className=" text-xs font-semibold">Latest Recycling Policy</Text>
+          <Text className="text-[18px] font-bold">Ms.Policy</Text>
         </TouchableOpacity>
       </View>
 
@@ -80,9 +80,9 @@ const HomeScreen = ({ navigation }) => {
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("Service")}
-          className="w-[160] h-[33] bg-[#FAD0D6] p-2 rounded-3xl items-center justify-center top-[28] right-[100]"
+          className="w-[160] h-[35] bg-[#FAD0D6] p-2 rounded-3xl items-center justify-center top-[28] right-[100]"
         >
-          <Text className="text-xs font-semibold">Eco-friendly Products</Text>
+          <Text className="text-[18px] font-bold">Mr.EcoStore</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

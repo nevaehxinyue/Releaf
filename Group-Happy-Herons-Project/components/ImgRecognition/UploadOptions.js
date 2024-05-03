@@ -9,10 +9,9 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { TouchableHighlight, View, Alert, Text,  } from 'react-native';
-import { NetworkSimulator } from './NetworkSimulator';
 
 
-function UploadOptions({onTakeImage, onClearPrediction, onNetworkChange}) {
+function UploadOptions({onTakeImage, onClearPrediction}) {
     const [pickedImage, setPickedImage] = useState();
   const [imageSelection, setImageSelection] = useState("url");
 
@@ -88,15 +87,13 @@ function UploadOptions({onTakeImage, onClearPrediction, onNetworkChange}) {
     }
   }
     return (
-       <View className="flex-1 w-[230] flex-row justify-between items-center" >
+       <View className="flex-1 w-[250] flex-row justify-between items-center" >
         <TouchableHighlight onPress={takeImageHandler}>
         <MaterialIcons name="photo-camera" size={32} color="#233B29" />
       </TouchableHighlight>
       <TouchableHighlight onPress={pickImageHandler}>
         <MaterialIcons name="photo" size={32} color="#233B29" />
       </TouchableHighlight>
-      <NetworkSimulator onNetworkChange={onNetworkChange} />
-       
        </View>
     );
 }

@@ -14,7 +14,7 @@ function ImagePreview({ imageUri }) {
         colors={["#d4e4ff", "#dcd4ff", "#f2d4ff"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        className="w-[230] h-[230] items-center justify-center rounded-2xl"
+        className="w-[250] h-[250] items-center justify-center rounded-2xl"
       >
         {imageUri && (
           <>

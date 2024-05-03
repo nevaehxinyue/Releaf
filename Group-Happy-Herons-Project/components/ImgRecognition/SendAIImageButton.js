@@ -1,6 +1,5 @@
 import React from "react";
-import { Alert, TouchableOpacity, Text, View } from "react-native";
-import Button from "./Button";
+import { Alert, TouchableOpacity, Text } from "react-native";
 import sendImageToOpenAI from "../../api/gpt4Api";
 
 function SendAIImageButton({
@@ -19,9 +18,10 @@ function SendAIImageButton({
     setIsPredicting(true);
     try {
       const openAIResponse = await sendImageToOpenAI(imageBase64);
-      console.log(openAIResponse);
       const message = openAIResponse.choices[0].message.content;
-      setResponse(message);
+      const reformatedMessage = message.split('\*', 2) // split by *
+      console.log(reformatedMessage[0]);
+      setResponse(reformatedMessage);
       setIsPredicting(false);
     } catch (error) {
       console.log("Error sending image to gpt", error);
@@ -29,14 +29,28 @@ function SendAIImageButton({
       setIsPredicting(false);
     }
   };
+
+  if (isConnected) {
+    return (
+      <TouchableOpacity
+        className="bg-[#233B29] rounded-3xl w-[250] h-[35] items-center justify-center"
+        onPress={sendImagToGpt4}
+        disabled={isPredicting}
+      >
+        <Text className="text-[#FBF6EE] text-[16px] font-semibold">Submit</Text>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <TouchableOpacity
-      className="bg-[#233B29] rounded-2xl w-[75] h-[30] items-center justify-center"
-      onPress={isConnected ? sendImagToGpt4 : onPress}
-      disabled={isPredicting}
-    >
-      <Text className="text-[#FBF6EE] text-[16px] font-semibold">Submit</Text>
-    </TouchableOpacity>
+    className="bg-[#233B29] rounded-2xl w-[75] h-[30] items-center justify-center"
+    onPress={onPress}
+    disabled={isPredicting}
+  >
+    <Text className="text-[#FBF6EE] text-[16px] font-semibold">Submit</Text>
+  </TouchableOpacity>
+    
   );
 }
 

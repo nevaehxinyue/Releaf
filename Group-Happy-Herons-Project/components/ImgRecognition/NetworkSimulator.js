@@ -5,6 +5,7 @@ import { useState } from "react";
 export function NetworkSimulator({ onNetworkChange }) {
   const [isConnected, setIsConnected] = useState(true);
 
+
   return (
     <View className="flex-row items-center justify-center gap-1" >
       <Switch
@@ -17,7 +18,7 @@ export function NetworkSimulator({ onNetworkChange }) {
         value={isConnected}
         style={styles.switch}
       />
-      <Text className="font-bold text-[#233B29]">{isConnected ? "Online" : "Offline"}</Text>
+      <Text className="font-bold text-lg ">{isConnected ? "Online" : "Offline"}</Text>
     </View>
   );
 };

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
@@ -15,6 +16,8 @@ import React from "react";
 import Header from "../components/ImgRecognition/Header";
 import ImagePreview from "../components/ImgRecognition/ImagePreview";
 import UploadOptions from "../components/ImgRecognition/UploadOptions";
+import LoadingAnimation from "../components/ImgRecognition/LoadingAnimation";
+import AIResponse from "../components/ImgRecognition/AIResponse";
 
 function ImgRecogScreen({ model }) {
   const [imageUri, setImageUri] = useState("");
@@ -28,6 +31,7 @@ function ImgRecogScreen({ model }) {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
+      console.log(`NetState: ${state.isConnected}`)
       setIsConnected(state.isConnected);
     });
 
@@ -45,7 +49,7 @@ function ImgRecogScreen({ model }) {
     setImageBase("");
     setPrediction(null);
     setResponse("");
-    imagePreview = "";
+   
   };
 
   function takeImageHandler(imageUri, imageBase) {
@@ -76,47 +80,45 @@ function ImgRecogScreen({ model }) {
     }
     setIsPredicting(false);
   }
+  console.log(`isConnected: ${isConnected}`)
 
   return (
     <SafeAreaView className="flex-1 bg-[#FBF6EE]">
       <ScrollView className="flex-grow">
         {/* //Header */}
-        <Header />
+        <Header onNetworkChange={setIsConnected} />
         {/* //Image upload options and preview box */}
         <View className="flex-1 items-center justify-center top-10">
           <UploadOptions
             onTakeImage={takeImageHandler}
             onClearPrediction={clearPredictionHandler}
-            onNetworkChange={setIsConnected}
           />
           <ImagePreview imageUri={imageUri} />
-          <View className="w-[230] flex-1 items-end justify-end top-4 ">
-          <SendAIImageButton
-            imageBase64={imageBase}
-            setResponse={setResponse}
-            isPredicting={isPredicting}
-            setIsPredicting={setIsPredicting}
-            onPress={handlePredicting}
-          />
-        </View>
+          <View className="w-[250] flex-1 items-end justify-end top-4 ">
+            <SendAIImageButton
+              isConnected={isConnected}
+              imageBase64={imageBase}
+              setResponse={setResponse}
+              isPredicting={isPredicting}
+              setIsPredicting={setIsPredicting}
+              onPress={handlePredicting}
+            />
+          </View>
         </View>
         {/* //Submit button */}
-        
 
-        {isPredicting ? (
-          <Text>Please Waiting~ It is Recognizing...🧐</Text>
-        ) : null}
+        <View className="flex-1 items-center justify-center top-[90px]">
+    
+          {/* <LoadingAnimation /> */}
 
-        <Text>{prediction}</Text>
+          <AIResponse
+            isPredicting={isPredicting}
+            isConnected={isConnected}
+            response={response}
+            prediciton={prediction}
+          />
+        </View>
 
-        {isConnected ? (
-          <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
-            {response ? <Text>{response}</Text> : null}
-          </View>
-        ) : null}
-
-        {/* <NetworkSimulator onNetworkChange={setIsConnected} /> */}
-        {isPredicting && <LoadingOverlay style={styles.overlay} />}
       </ScrollView>
     </SafeAreaView>
   );
