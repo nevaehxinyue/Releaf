@@ -4,6 +4,7 @@ import {
   View,
   ActivityIndicator,
   useWindowDimensions,
+  TouchableOpacity,
 } from "react-native";
 import * as Font from "expo-font";
 import Animated, {
@@ -20,7 +21,7 @@ import { BackgroundImages } from "../components/ImageData";
 
 function OnboardingScreen({ navigation }) {
   const { width } = useWindowDimensions();
-  const opacity = useSharedValue(0.5);
+  const opacity = useSharedValue(0.3);
 
   useEffect(() => {
     opacity.value = withRepeat(
@@ -60,7 +61,7 @@ function OnboardingScreen({ navigation }) {
   }
 
   return (
-    <View className="flex-1 bg-black">
+    <View className="flex-1 bg-[#FBF6EE] items-center justify-center">
       <View className="flex-1 top-36">
         <Carousel
           loop={true}
@@ -82,23 +83,37 @@ function OnboardingScreen({ navigation }) {
           scrollAnimationDuration={1200}
         />
       </View>
-      <View className="flex-1 items-center justify-center top-20">
+      <View className="flex-1 items-center justify-center top-24">
         <Text
-          className="text-2xl text-[#FBF6EE]"
+          className="text-[26px] text-[#233B29]"
           style={{ fontFamily: "LobsterTwo-Italic" }}
         >
           We simplify eco-caring for you
         </Text>
       </View>
-      <View className="flex-1 items-center justify-center">
+      {/* <View className=" flex-1 items-center justify-center top-40">
         <Animated.Text
-          className="text-[#FBF6EE] text-lg"
+          className="text-[#233B29] text-lg font-semibold"
           style={animatedTextStyle}
           onPress={() => navigation.replace("AppNavigator")}
         >
           {" "}
           Tab to start{" "}
         </Animated.Text>
+      </View> */}
+
+      <View className="flex-1 items-center justify-center">
+        <TouchableOpacity
+          className="rounded-full items-center justify-center  h-[80] w-[80] bg-[#233B29] "
+          onPress={() => navigation.replace("AppNavigator")}
+        >
+          <Animated.Text
+            style={animatedTextStyle}
+            className="text-[#FBF6EE] text-lg font-semibold"
+          >
+            Start
+          </Animated.Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

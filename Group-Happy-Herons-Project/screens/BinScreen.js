@@ -3,12 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { getWasteBinData } from "../components/FetchData.js";
+import BinsScreenHeader from "../components/BinsScreen/BinsScreenHeader.js";
 
 function BinScreen() {
   const [selectedBin, setSelectedBin] = useState(null);
@@ -17,9 +18,9 @@ function BinScreen() {
   const generalRubbishAnimationRef = useRef(null);
 
   const animations = {
-    recycling: require("../assets/recycling.json"),
-    foodScraps: require("../assets/food.json"),
-    generalRubbish: require("../assets/general.json"),
+    recycling: require("../assets/binAnimations/recycling.json"),
+    foodScraps: require("../assets/binAnimations/food.json"),
+    generalRubbish: require("../assets/binAnimations/general.json"),
   };
 
   const handleSelectBin = (bin) => {
@@ -62,7 +63,8 @@ function BinScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <BinsScreenHeader />
       <View style={styles.imagesContainer}>
         <TouchableOpacity
           testID="recycling-button"
@@ -97,18 +99,19 @@ function BinScreen() {
         <ScrollView style={styles.scrollViewStyle}>
           <View style={styles.wasteListContainer}>
             <View style={styles.wasteList}>
-              <Text style={styles.listTitle}>Yes, please</Text>
+              <Text style={styles.listTitle}>✅Yes, please</Text>
               {wasteItems[selectedBin].yes.map((item, index) => (
                 <Text key={index} style={styles.listItem}>
-                  {item}
+                  • {item}
                 </Text>
               ))}
+              {selectedBin === "recycling" && <Text style={styles.listItem}>Please rinse and empty plastic/glass containers before disposal.</Text> }
             </View>
             <View style={styles.wasteList}>
-              <Text style={styles.listTitleNoThanks}>No, thanks</Text>
+              <Text style={styles.listTitleNoThanks}>❌No, thanks</Text>
               {wasteItems[selectedBin].no.map((item, index) => (
                 <Text key={index} style={styles.listItem}>
-                  {item}
+                  • {item}
                 </Text>
               ))}
             </View>
@@ -117,7 +120,7 @@ function BinScreen() {
       ) : (
         <Text style={styles.placeholderText}>Please choose one</Text>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -126,11 +129,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: "center",
-    backgroundColor: "#FFFFFF", // Set background color to white
+    backgroundColor: "#FBF6EE", // Set background color to white
   },
   lottieStyle: {
-    width: 140,
-    height: 140,
+    width: 120,
+    height: 120,
   },
   imagesContainer: {
     flexDirection: "row",

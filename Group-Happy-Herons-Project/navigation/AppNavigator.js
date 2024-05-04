@@ -10,6 +10,7 @@ import { useModel } from "../hooks/useModel";
 import ImgRecogIcon from "../components/ImgRecogIcon";
 import "react-native-gesture-handler";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator();
@@ -39,10 +40,10 @@ function AppNavigator() {
           name="RecycleMap"
           component={MapScreen}
           options={{
+            headerShown: false,
             tabBarLabel: "RecycleMap",
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="map-marker-alt" size={size} color={color} />
-            ),
+              <MaterialCommunityIcons name="map-marker-radius" size={30} color={color} />)
           }}
         ></Tab.Screen>
   
@@ -63,6 +64,7 @@ function AppNavigator() {
           name="RecyclePolicy"
           component={BinScreen}
           options={{
+            headerShown: false,
             tabBarLabel: "RecyclePolicy",
             tabBarIcon: ({ color, size }) => (
               <Entypo name="trash" size={size} color={color} />

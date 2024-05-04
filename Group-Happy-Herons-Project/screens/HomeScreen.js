@@ -17,13 +17,13 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView className="bg-[#FBF6EE] flex-1">
       {/* // For first image */}
-      <View className="flex-1 top-6">
+      <View className="flex-1 top-10">
         <Image
-          className="h-[130] w-[130] absolute rounded-r-2xl left-[-1]"
+          className="h-[140] w-[150] absolute rounded-r-2xl left-[-1]"
           source={HomePageImages["robot"]}
         />
         <TouchableOpacity
-          className="w-[120] bg-[#C6B6FB] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[90]"
+          className="w-[160] bg-[#C6B6FB] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[90]"
           onPress={() => navigation.navigate("Mr.Bin")}
         >
           <Text className=" text-[18px] font-bold">
@@ -35,12 +35,12 @@ const HomeScreen = ({ navigation }) => {
       {/* // For second image */}
       <View className="flex-1 flex-row justify-end">
         <Image
-          className="h-[130] w-[130] rounded-l-2xl absolute "
+          className="h-[140] w-[150] rounded-l-2xl absolute "
           source={HomePageImages["map"]}
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("RecycleMap")}
-          className="w-[120] h-[35] bg-[#D9EEF2] p-2 rounded-3xl items-center justify-center top-[120] right-12"
+          className="w-[160] h-[35] bg-[#D9EEF2] p-2 rounded-3xl items-center justify-center top-[120] right-[80]"
         >
           <Text className="text-[18px] font-bold">
             Mr.Map
@@ -54,19 +54,19 @@ const HomeScreen = ({ navigation }) => {
           style={{ fontFamily: "LobsterTwo-Italic" }}
           className="text-[#233B29] font-extrabold text-2xl"
         >
-          There you go{" "}
+          Here We Go{" "}
         </Text>
       </View>
 
       {/* // For third image */}
-      <View className="flex-1 top-6">
+      <View className="flex-1 top-2">
         <Image
-          className="h-[130] w-[130] absolute rounded-r-2xl left-[-1]"
+          className="h-[140] w-[150] absolute rounded-r-2xl left-[-1]"
           source={HomePageImages["policy"]}
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("RecyclePolicy")}
-          className="w-[150] bg-[#C3F7D2] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[10]"
+          className="w-[160] bg-[#C3F7D2] h-[35] p-2 rounded-3xl items-center justify-center left-24 top-[14]"
         >
           <Text className="text-[18px] font-bold">Ms.Policy</Text>
         </TouchableOpacity>
@@ -75,7 +75,7 @@ const HomeScreen = ({ navigation }) => {
       {/* // For fourth image */}
       <View className="flex-1 flex-row justify-end">
         <Image
-          className="h-[130] w-[130] rounded-l-2xl absolute "
+          className="h-[140] w-[150] rounded-l-2xl absolute "
           source={HomePageImages["products"]}
         />
         <TouchableOpacity

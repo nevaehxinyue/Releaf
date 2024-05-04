@@ -10,6 +10,8 @@ import {
   locationsOfDonations,
 } from "../api/markerLocations";
 import { Feather } from "@expo/vector-icons";
+import MapScreenHeader from "../components/MapScreen/MapScreenHeader"
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const MapScreen = () => {
@@ -72,18 +74,20 @@ const MapScreen = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 mt-5">
+    <SafeAreaView className="flex-1 mt-5 bg-[#FBF6EE]">
+      {/* //Header */}
+      <MapScreenHeader />
       {/* toggle button */}
-      <View className="flex-row items-center justify-center mt-8 mb-8 rounded-lg shadow-xl">
+      <View className="flex-row items-center justify-center mb-8 rounded-lg shadow-xl">
         <TouchableOpacity
           onPress={toggleOption}
-          className={`rounded-lg px-2 py-4 w-[150px] items-center justify-center ${
-            selectedOption === "ClothingBins" ? "bg-[#FBF6EE]" : ""
+          className={`rounded-3xl px-2 py-4 w-[200px] items-center justify-center ${
+            selectedOption === "ClothingBins" ? "bg-[#233B29]" : ""
           }`}
         >
           <Text
-            className={`font-bold ${
-              selectedOption === "ClothingBins" ? "text-[#233B29]" : ""
+            className={`font-bold text-[16px] ${
+              selectedOption === "ClothingBins" ? "text-[#FBF6EE]" : ""
             }`}
           >
             Clothing Bins
@@ -91,13 +95,13 @@ const MapScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={toggleOption}
-          className={`rounded-lg px-2 py-4 w-[150px] items-center justify-center ${
-            selectedOption === "ClothingBins" ? "" : "bg-[#FBF6EE]"
+          className={`rounded-3xl px-2 py-4 w-[200px] items-center justify-center ${
+            selectedOption === "ClothingBins" ? "" : "bg-[#233B29]"
           }`}
         >
           <Text
-            className={`font-bold ${
-              selectedOption === "ClothingBins" ? "" : "text-[#233B29]"
+            className={`font-bold text-[16px] ${
+              selectedOption === "ClothingBins" ? "" : "text-[#FBF6EE]"
             }`}
           >
             Charity Donations
@@ -107,7 +111,7 @@ const MapScreen = () => {
 
       {/* map display */}
       <MapView
-        className="w-full h-[500px]"
+        className="w-full h-[520px]"
         provider={PROVIDER_GOOGLE}
         region={region}
         onRegionChangeComplete={onRegionChange}
@@ -118,15 +122,15 @@ const MapScreen = () => {
       </MapView>
 
       {/* notes for the user */}
-      <View className="items-start justify-center space-y-2">
+      <View className="items-start justify-center space-y-2 mt-2 ml-2">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-          <Feather name="info" size={24} color="black" />
+        <MaterialCommunityIcons name="map-marker-check-outline" size={22} color="black" />
           <Text className="font-semibold text-[#233B29]">
             Clothing Bins: run by private businesses
           </Text>
         </TouchableOpacity>
         <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-          <Feather name="info" size={24} color="black" />
+        <MaterialCommunityIcons name="map-marker-check-outline" size={22} color="black" />
           <Text className="font-semibold text-[#233B29]">
             Charity Donations: run by charitable trusts
           </Text>

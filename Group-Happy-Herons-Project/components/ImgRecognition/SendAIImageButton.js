@@ -33,22 +33,22 @@ function SendAIImageButton({
   if (isConnected) {
     return (
       <TouchableOpacity
-        className="bg-[#233B29] rounded-3xl w-[250] h-[35] items-center justify-center"
+        className="bg-[#233B29] rounded-3xl w-[250] py-4 items-center justify-center"
         onPress={sendImagToGpt4}
         disabled={isPredicting}
       >
-        <Text className="text-[#FBF6EE] text-[16px] font-semibold">Submit</Text>
+        <Text className="text-[#FBF6EE] text-[16px] font-bold">Submit</Text>
       </TouchableOpacity>
     );
   }
 
   return (
     <TouchableOpacity
-    className="bg-[#233B29] rounded-2xl w-[75] h-[30] items-center justify-center"
+    className="bg-[#233B29] rounded-3xl w-[250] py-4 items-center justify-center"
     onPress={onPress}
     disabled={isPredicting}
   >
-    <Text className="text-[#FBF6EE] text-[16px] font-semibold">Submit</Text>
+    <Text className="text-[#FBF6EE] text-[16px] font-bold">Submit</Text>
   </TouchableOpacity>
     
   );

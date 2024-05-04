@@ -18,7 +18,7 @@ export function NetworkSimulator({ onNetworkChange }) {
         value={isConnected}
         style={styles.switch}
       />
-      <Text className="font-bold text-lg ">{isConnected ? "Online" : "Offline"}</Text>
+      <Text className="font-bold text-[17px] ">{isConnected ? "Online" : "Offline"}</Text>
     </View>
   );
 };
