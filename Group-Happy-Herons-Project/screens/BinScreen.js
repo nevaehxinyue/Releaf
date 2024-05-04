@@ -67,7 +67,7 @@ function BinScreen() {
     <SafeAreaView style={styles.container}>
       <BinsScreenHeader selectedBin={selectedBin} />
       <View>
-      {!selectedBin && <Text className="text-[24px] font-semibold">Tap a bin</Text>}
+      <Text className="text-[24px] font-semibold">Tap a bin</Text>
       </View>
       <View style={styles.imagesContainer}>
         <TouchableOpacity
