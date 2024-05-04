@@ -10,6 +10,7 @@ import {
 import LottieView from "lottie-react-native";
 import { getWasteBinData } from "../components/FetchData.js";
 import BinsScreenHeader from "../components/BinsScreen/BinsScreenHeader.js";
+import BinItemList from "../components/BinsScreen/BinItemList.js";
 
 function BinScreen() {
   const [selectedBin, setSelectedBin] = useState(null);
@@ -64,7 +65,10 @@ function BinScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <BinsScreenHeader />
+      <BinsScreenHeader selectedBin={selectedBin} />
+      <View>
+      {!selectedBin && <Text className="text-[24px] font-semibold">Tap a bin</Text>}
+      </View>
       <View style={styles.imagesContainer}>
         <TouchableOpacity
           testID="recycling-button"
@@ -85,7 +89,7 @@ function BinScreen() {
             style={styles.lottieStyle}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleSelectBin("generalRubbish")}>
+        <TouchableOpacity onPress={() => handleSelectBin("generalRubbish")} >
           <LottieView
             ref={generalRubbishAnimationRef}
             source={animations.generalRubbish}
@@ -94,8 +98,9 @@ function BinScreen() {
           />
         </TouchableOpacity>
       </View>
+      <BinItemList wasteItems={wasteItems} selectedBin={selectedBin} />
 
-      {selectedBin ? (
+      {/* {selectedBin ? (
         <ScrollView style={styles.scrollViewStyle}>
           <View style={styles.wasteListContainer}>
             <View style={styles.wasteList}>
@@ -119,7 +124,7 @@ function BinScreen() {
         </ScrollView>
       ) : (
         <Text style={styles.placeholderText}>Please choose one</Text>
-      )}
+      )} */}
     </SafeAreaView>
   );
 }
@@ -132,14 +137,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#FBF6EE", // Set background color to white
   },
   lottieStyle: {
-    width: 120,
-    height: 120,
+    width: 150,
+    height: 150,
   },
   imagesContainer: {
     flexDirection: "row",
     width: "100%", // Make sure it spans the full width
     justifyContent: "space-between",
     marginBottom: 20,
+    right: 7,
   },
   wasteListContainer: {
     flexDirection: "row",
