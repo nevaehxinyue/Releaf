@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Linking,
+  TouchableOpacity,
 } from "react-native";
 
 import { getProduct } from "./ProductsService.js";
@@ -25,13 +26,15 @@ export function ProductDetails({ route }) {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="bg-[#FBF6EE] h-full">
       <ScrollView>
         <Image style={styles.image} source={product.image} />
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.description}>{product.description}</Text>
-          <Button title="View Website" onPress={handlePress} />
+          <TouchableOpacity onPress={handlePress} className="rounded-3xl items-center justify-center h-[45] bg-[#233B29]">
+            <Text className="text-[20px] text-[#FBF6EE] font-semibold">View Website</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -57,16 +60,18 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   infoContainer: {
-    padding: 16,
+    padding: 20,
+    marginTop: 8
   },
   name: {
-    fontSize: 22,
+    fontSize: 23,
     fontWeight: "bold",
+    marginBottom: 20,
   },
   description: {
-    fontSize: 16,
-    fontWeight: "400",
-    color: "#787878",
-    marginBottom: 16,
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#233B29",
+    marginBottom: 40,
   },
 });

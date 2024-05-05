@@ -55,6 +55,7 @@ function OnboardingScreen({ navigation }) {
   // Use font
   const [fontsLoaded] = Font.useFonts({
     "LobsterTwo-Italic": require("../assets/fonts/LobsterTwo-Italic.ttf"),
+    "Merriweather-Bold": require("../assets/fonts/Merriweather-Bold.ttf")
   });
   if (!fontsLoaded) {
     return <ActivityIndicator size="large" />;
@@ -85,10 +86,10 @@ function OnboardingScreen({ navigation }) {
       </View>
       <View className="flex-1 items-center justify-center top-24">
         <Text
-          className="text-[26px] text-[#233B29]"
-          style={{ fontFamily: "LobsterTwo-Italic" }}
+          className="text-[24px] font-semibold text-[#233B29]"
+          style={{ fontFamily: "Merriweather-Bold" }}
         >
-          We simplify eco-caring for you
+          We Simplify Eco-Caring for You
         </Text>
       </View>
       {/* <View className=" flex-1 items-center justify-center top-40">

@@ -74,20 +74,21 @@ const MapScreen = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 mt-5 bg-[#FBF6EE]">
+    <SafeAreaView className="flex-1 mt-5 bg-[#FBF6EE] items-center">
       {/* //Header */}
       <MapScreenHeader />
-      {/* toggle button */}
-      <View className="flex-row items-center justify-center mb-8 rounded-lg shadow-xl">
+
+       {/* toggle button */}
+       <View className="flex-row items-center justify-center mt-4 mb-8 rounded-lg shadow-xl">
         <TouchableOpacity
           onPress={toggleOption}
-          className={`rounded-3xl px-2 py-4 w-[200px] items-center justify-center ${
+          className={`rounded-3xl px-2 py-4 w-[190px] items-center justify-center ${
             selectedOption === "ClothingBins" ? "bg-[#233B29]" : ""
           }`}
         >
           <Text
             className={`font-bold text-[16px] ${
-              selectedOption === "ClothingBins" ? "text-[#FBF6EE]" : ""
+              selectedOption === "ClothingBins" ? "text-[#f5f3f0]" : ""
             }`}
           >
             Clothing Bins
@@ -95,13 +96,13 @@ const MapScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={toggleOption}
-          className={`rounded-3xl px-2 py-4 w-[200px] items-center justify-center ${
+          className={`rounded-3xl px-2 py-4 w-[190px] items-center justify-center ${
             selectedOption === "ClothingBins" ? "" : "bg-[#233B29]"
           }`}
         >
           <Text
             className={`font-bold text-[16px] ${
-              selectedOption === "ClothingBins" ? "" : "text-[#FBF6EE]"
+              selectedOption === "ClothingBins" ? "" : "text-[#f5f3f0]"
             }`}
           >
             Charity Donations
@@ -109,9 +110,12 @@ const MapScreen = () => {
         </TouchableOpacity>
       </View>
 
+
+      
       {/* map display */}
+      <View className="border-2 border-gray-300 w-[380] h-[450] rounded-3xl overflow-hidden shadow-lg">
       <MapView
-        className="w-full h-[520px]"
+        className="w-full h-full"
         provider={PROVIDER_GOOGLE}
         region={region}
         onRegionChangeComplete={onRegionChange}
@@ -120,9 +124,10 @@ const MapScreen = () => {
         {showLocationsOfDonations()} */}
         {showLocations()}
       </MapView>
+      </View>
 
-      {/* notes for the user */}
-      <View className="items-start justify-center space-y-2 mt-2 ml-2">
+       {/* notes for the user */}
+       <View className="items-start justify-center space-y-2 mb-4 mt-4 mr-14">
         <TouchableOpacity className="flex-row items-center justify-center space-x-2">
         <MaterialCommunityIcons name="map-marker-check-outline" size={22} color="black" />
           <Text className="font-semibold text-[#233B29]">
@@ -136,6 +141,11 @@ const MapScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
+     
+
+      
+
+     
     </SafeAreaView>
   );
 };

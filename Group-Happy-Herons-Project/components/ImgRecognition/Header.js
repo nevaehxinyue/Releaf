@@ -14,7 +14,7 @@ function Header({ onNetworkChange }) {
             size={32}
             color="black"
           />
-          <Text className="left-2 text-[24px] font-bold ">Ms.Bin</Text>
+          <Text className="left-2 text-[24px] font-bold ">Ms.Machine</Text>
         </View>
         <View className="right-4">
           <NetworkSimulator onNetworkChange={onNetworkChange} />

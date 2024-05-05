@@ -11,6 +11,7 @@ import ImgRecogIcon from "../components/ImgRecogIcon";
 import "react-native-gesture-handler";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import HomeScreen2 from "../screens/HomeScreen2";
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +28,7 @@ function AppNavigator() {
       >
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeScreen2}
           options={{
             headerShown: false,
             tabBarLabel: "Home",
@@ -76,6 +77,7 @@ function AppNavigator() {
           name="Service"
           component={EstoreScreen}
           options={{
+            headerShown: false,
             tabBarLabel: "Service",
             tabBarIcon: ({ color, size }) => (
               <FontAwesome6 name="store" size={size} color={color} />
