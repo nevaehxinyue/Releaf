@@ -24,8 +24,11 @@ describe("BinScreen", () => {
     const recyclingButton = getByTestId("recycling-button");
     fireEvent.press(recyclingButton);
 
-    expect(/Glass$/).toBeTruthy();
-    expect(/paper$/).toBeTruthy();
+    const glass = await findByText(/Glass$/);
+    const paper = await findByText(/Paper$/);
+
+    expect(glass).toBeTruthy();
+    expect(paper).toBeTruthy();
   });
 
   it('shows the correct items in "No, thanks" section for selected bin', async () => {
