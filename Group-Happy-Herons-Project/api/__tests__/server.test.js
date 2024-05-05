@@ -9,7 +9,6 @@ const dotenv = require("dotenv");
 const path = require("path");
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
-console.log(process.env.DB_URL);
 
 // const dotenv = require("dotenv");
 // dotenv.config();
@@ -30,7 +29,7 @@ const defineModels = () => {
 beforeAll(async () => {
   mongod = await MongoMemoryServer.create();
   const uri = mongod.getUri();
-  console.log("MongoDB URI:", uri); // Log the URI for debugging
+  // console.log("MongoDB URI:", uri); // Log the URI for debugging
 
   await mongoose.connect(uri, {
     useNewUrlParser: true,

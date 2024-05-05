@@ -61,7 +61,6 @@ function UploadOptions({onTakeImage, onClearPrediction}) {
 
     if (!image.canceled) {
       onTakeImage(image.assets[0].uri, image.assets[0].base64);
-      console.log(image.assets[0].uri);
       setPickedImage(image.assets[0].uri);
     }
   }

@@ -18,6 +18,7 @@ import Animated, {
 import Carousel from "react-native-reanimated-carousel";
 import BackImage from "../components/OnboardingScreen/BackImage";
 import { BackgroundImages } from "../components/ImageData";
+import { FontAwesome6 } from '@expo/vector-icons';
 
 function OnboardingScreen({ navigation }) {
   const { width } = useWindowDimensions();
@@ -35,9 +36,9 @@ function OnboardingScreen({ navigation }) {
     (value) => {
       "worklet";
       const zIndex = interpolate(value, [-1, 0, 1], [10, 20, 30]);
-      const translateX = interpolate(value, [-2, 0, 1], [-width, 0, width]);
+      const translateX = interpolate(value, [-1, 0, 1], [-width, 0, width]);
       return {
-        transform: [{ translateX: isNaN(translateX) ? 0 : translateX }],
+        transform: [{ translateX }],
         zIndex,
       };
     },
@@ -67,7 +68,8 @@ function OnboardingScreen({ navigation }) {
         <Carousel
           loop={true}
           autoPlay={true}
-          style={{ width: width, height: (3 / 4) * width }}
+          style={{ height: (3 / 4) * width }}
+          defaultIndex={0}
           width={width}
           data={BackgroundImages}
           renderItem={({ index, animationValue }) => {
@@ -92,30 +94,17 @@ function OnboardingScreen({ navigation }) {
           We Simplify Eco-Caring for You
         </Text>
       </View>
-      {/* <View className=" flex-1 items-center justify-center top-40">
-        <Animated.Text
-          className="text-[#233B29] text-lg font-semibold"
-          style={animatedTextStyle}
-          onPress={() => navigation.replace("AppNavigator")}
-        >
-          {" "}
-          Tab to start{" "}
-        </Animated.Text>
-      </View> */}
 
-      <View className="flex-1 items-center justify-center">
+      <Animated.View className="flex-1 items-center justify-center">
         <TouchableOpacity
           className="rounded-full items-center justify-center  h-[80] w-[80] bg-[#233B29] "
           onPress={() => navigation.replace("AppNavigator")}
         >
-          <Animated.Text
-            style={animatedTextStyle}
-            className="text-[#FBF6EE] text-lg font-semibold"
-          >
-            Start
-          </Animated.Text>
+          <Animated.View style={animatedTextStyle} >
+          <FontAwesome6 name="recycle" size={36} color="#FBF6EE" />
+          </Animated.View>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }

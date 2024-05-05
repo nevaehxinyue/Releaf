@@ -31,7 +31,6 @@ function ImgRecogScreen({ model }) {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      console.log(`NetState: ${state.isConnected}`)
       setIsConnected(state.isConnected);
     });
 
@@ -80,7 +79,6 @@ function ImgRecogScreen({ model }) {
     }
     setIsPredicting(false);
   }
-  console.log(`isConnected: ${isConnected}`)
 
   return (
     <SafeAreaView className="flex-1 bg-[#FBF6EE]">

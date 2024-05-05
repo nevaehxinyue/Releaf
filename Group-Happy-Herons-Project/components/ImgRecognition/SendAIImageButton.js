@@ -20,7 +20,7 @@ function SendAIImageButton({
       const openAIResponse = await sendImageToOpenAI(imageBase64);
       const message = openAIResponse.choices[0].message.content;
       const reformatedMessage = message.split('\*', 2) // split by *
-      console.log(reformatedMessage[0]);
+      // console.log(reformatedMessage[0]);
       setResponse(reformatedMessage);
       setIsPredicting(false);
     } catch (error) {

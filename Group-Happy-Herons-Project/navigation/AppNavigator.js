@@ -11,7 +11,7 @@ import ImgRecogIcon from "../components/ImgRecogIcon";
 import "react-native-gesture-handler";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import HomeScreen2 from "../screens/HomeScreen2";
+import HomeScreen2 from "../screens/HomeScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -28,7 +28,7 @@ function AppNavigator() {
       >
         <Tab.Screen
           name="Home"
-          component={HomeScreen2}
+          component={HomeScreen}
           options={{
             headerShown: false,
             tabBarLabel: "Home",
@@ -49,7 +49,7 @@ function AppNavigator() {
         ></Tab.Screen>
   
         <Tab.Screen
-          name="Mr.Bin"
+          name="Trash Bin Decision"
           // component={ImgRecogStackNavigator}
           children={() => <ImgRecogScreen model={model} />}
           options={{
@@ -62,11 +62,11 @@ function AppNavigator() {
           }}
         ></Tab.Screen>
         <Tab.Screen
-          name="RecyclePolicy"
+          name="Recycling Tips"
           component={BinScreen}
           options={{
             headerShown: false,
-            tabBarLabel: "RecyclePolicy",
+            tabBarLabel: "RecycleTips",
             tabBarIcon: ({ color, size }) => (
               <Entypo name="trash" size={size} color={color} />
             ),
@@ -74,11 +74,11 @@ function AppNavigator() {
         ></Tab.Screen>
   
         <Tab.Screen
-          name="Service"
+          name="Store"
           component={EstoreScreen}
           options={{
             headerShown: false,
-            tabBarLabel: "Service",
+            tabBarLabel: "Store",
             tabBarIcon: ({ color, size }) => (
               <FontAwesome6 name="store" size={size} color={color} />
             ),

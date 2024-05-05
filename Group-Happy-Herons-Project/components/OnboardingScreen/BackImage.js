@@ -23,7 +23,7 @@ function BackImage({ index, animationValue, width }) {
   }, [animationValue]);
 
   return (
-    <Animated.View style={{ width: width, height: (4 / 5) * width, overflow: "hidden" }}>
+    <Animated.View style={{ width: width, height: (4 / 5) * width, overflow: "hidden", }}>
       <Animated.Image
         source={BackgroundImages[index].image}
         style={[
