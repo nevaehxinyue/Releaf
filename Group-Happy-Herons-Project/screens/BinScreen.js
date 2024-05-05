@@ -67,7 +67,7 @@ function BinScreen() {
     <SafeAreaView style={styles.container}>
       <BinsScreenHeader selectedBin={selectedBin} />
       <View>
-      <Text className="text-[24px] font-semibold">Tap a bin</Text>
+        <Text className="text-[24px] font-semibold">Tap a bin</Text>
       </View>
       <View style={styles.imagesContainer}>
         <TouchableOpacity
@@ -81,7 +81,10 @@ function BinScreen() {
             style={styles.lottieStyle}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleSelectBin("foodScraps")}>
+        <TouchableOpacity
+          testID="food-button"
+          onPress={() => handleSelectBin("foodScraps")}
+        >
           <LottieView
             ref={foodScrapsAnimationRef}
             source={animations.foodScraps}
@@ -89,7 +92,10 @@ function BinScreen() {
             style={styles.lottieStyle}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleSelectBin("generalRubbish")} >
+        <TouchableOpacity
+          testID="general-button"
+          onPress={() => handleSelectBin("generalRubbish")}
+        >
           <LottieView
             ref={generalRubbishAnimationRef}
             source={animations.generalRubbish}
