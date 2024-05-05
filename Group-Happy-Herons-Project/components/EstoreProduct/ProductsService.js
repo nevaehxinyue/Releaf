@@ -9,11 +9,11 @@ const PRODUCTS = [
   },
   {
     id: 101,
-    name: "Biodegradable Plastic",
+    name: "Biodegradable Bags",
     image: require("../../assets/products/p-101.jpg"),
-    url: "https://renouvo.net/biodegradable-compostable/what-are-biodegradable-plastics/#What_are_biodegradable_plastics",
+    url: "https://terra.co.nz/products/terra-biodegradable-bags?variant=39858844074149&currency=NZD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=Cj0KCQjwltKxBhDMARIsAG8KnqWBR_cJNSsp4sVZ5OtAE30Ge-98ZlomcqWNQIxRSGcZmD9Hh7jcPeAaAtySEALw_wcB&selling_plan=2886697125",
     description:
-      "Biodegradable plastic breaks down quickly and can be easily recycled through organic processes, is energy-efficient to produce and breaks down within a few months, thus minimizing the amount of waste. Composting of biodegradable plastic products also helps improve soil fertility.",
+      "TERRA multi-purpose biodegradable bags are clean, convenient, and eco-friendly. Made with GMO-free corn starch making it biodegradable and compostable, perfect to use as nappy bags, collecting pet waste, sanitary product disposal, or food scraps. With TERRA, you can enjoy the convenience whilst helping the environment.",
   },
   {
     id: 102,

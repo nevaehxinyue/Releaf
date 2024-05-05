@@ -16,14 +16,16 @@ function Estore() {
         options={({ navigation }) => ({
           title: "Products",
           headerTitleStyle: styles.headerTitle,
+          headerShown: false,
         })}
       />
       <Stack.Screen
         name="ProductDetails"
         component={ProductDetails}
         options={({ navigation }) => ({
+          presentation: 'modal',
           title: "Product details",
-          headerTitleStyle: styles.headerTitle,
+          headerShown: false,
         })}
       />
     </Stack.Navigator>

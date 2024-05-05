@@ -18,7 +18,7 @@ export function Product({ name, image, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "white",
+    backgroundColor: "#f5f3f0",
     borderRadius: 16,
     shadowOpacity: 0.2,
     shadowRadius: 4,
@@ -27,14 +27,18 @@ const styles = StyleSheet.create({
       height: 0,
       width: 0,
     },
+    resizeMode:'cover',
+    width:'90%',
+    marginLeft: 20,
     elevation: 1,
     marginVertical: 20,
   },
   thumb: {
-    height: 260,
+    height: 240,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     width: "100%",
+    resizeMode: 'cover'
   },
   infoContainer: {
     padding: 16,

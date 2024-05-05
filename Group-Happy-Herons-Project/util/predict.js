@@ -35,8 +35,16 @@ export async function predictImage(model, uri, setPrediction) {
     // Make a prediction
     const predictions = await model.predict(processedImage);
     const predIndex = predictions.argMax(-1).dataSync()[0];
-    const predLabel = classNames[predIndex];
-
+    let predLabel = "";
+    const imageLabel = classNames[predIndex];
+    console.log(imageLabel);
+    if (imageLabel === "General") {
+      predLabel = "Rubbish Bin";
+    } else if (imageLabel === "Recycle") {
+      predLabel = "Recycling Bin";
+    } else {
+      predLabel = imageLabel + " " + "Bin";
+    }
     setPrediction(predLabel);
     console.log(predIndex);
     console.log("Predicted:", predLabel);

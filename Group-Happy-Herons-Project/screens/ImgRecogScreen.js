@@ -3,19 +3,21 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Image,
-  Switch,
-  Button,
+  SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
 import { useState, useEffect } from "react";
-import ImagePicker from "../components/ImgRecognition/ImagePicker";
 import { predictImage } from "../util/predict";
 import SendAIImageButton from "../components/ImgRecognition/SendAIImageButton";
-import { NetworkSimulator } from "../components/ImgRecognition/NetworkSimulator";
 import LoadingOverlay from "../components/ImgRecognition/ui/LoadingOverlay";
 import React from "react";
+import Header from "../components/ImgRecognition/Header";
+import ImagePreview from "../components/ImgRecognition/ImagePreview";
+import UploadOptions from "../components/ImgRecognition/UploadOptions";
+import LoadingAnimation from "../components/ImgRecognition/LoadingAnimation";
+import AIResponse from "../components/ImgRecognition/AIResponse";
 
 function ImgRecogScreen({ model }) {
   const [imageUri, setImageUri] = useState("");
@@ -46,7 +48,7 @@ function ImgRecogScreen({ model }) {
     setImageBase("");
     setPrediction(null);
     setResponse("");
-    imagePreview = "";
+   
   };
 
   function takeImageHandler(imageUri, imageBase) {
@@ -78,61 +80,45 @@ function ImgRecogScreen({ model }) {
     setIsPredicting(false);
   }
 
-  let imagePreview = "";
-
-  imagePreview = (
-    <>
-      <Image style={styles.image} source={{ uri: imageUri }} />
-      <Text>{prediction}</Text>
-    </>
-  );
-
   return (
-    <View style={styles.fullscreen}>  
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.viewContainer}>
-          {imageUri ? (
-            <View style={styles.imagePreview}>{imagePreview}</View>
-          ) : null}
-
-          {isPredicting ? (
-            <Text>Please Waiting~ It is Recognizing...🧐</Text>
-          ) : null}
-
-          <ImagePicker
+    <SafeAreaView className="flex-1 bg-[#FBF6EE]">
+      <ScrollView className="flex-grow">
+        {/* //Header */}
+        <Header onNetworkChange={setIsConnected} />
+        {/* //Image upload options and preview box */}
+        <View className="flex-1 items-center justify-center top-10">
+          <UploadOptions
             onTakeImage={takeImageHandler}
             onClearPrediction={clearPredictionHandler}
           />
-
-          {isConnected ? (
+          <ImagePreview imageUri={imageUri} />
+          <View className="w-[250] flex-1 items-end justify-end top-4 ">
             <SendAIImageButton
-              name="submit"
+              isConnected={isConnected}
               imageBase64={imageBase}
               setResponse={setResponse}
+              isPredicting={isPredicting}
               setIsPredicting={setIsPredicting}
-            />
-          ) : (
-            <Button
-              title="Submit"
               onPress={handlePredicting}
-              disabled={isPredicting}
             />
-          )}
+          </View>
+        </View>
+        {/* //Submit button */}
+
+        <View className="flex-1 items-center justify-center top-[90px]">
+    
+          {/* <LoadingAnimation /> */}
+
+          <AIResponse
+            isPredicting={isPredicting}
+            isConnected={isConnected}
+            response={response}
+            prediciton={prediction}
+          />
         </View>
 
-        {isConnected ? (
-          <View className="items-center rounded-md border-2 border-gray-200 bg-gray-100 w-80 h-52">
-            {response ? <Text>{response}</Text> : null}
-          </View>
-        ) : null}
-
-        <NetworkSimulator onNetworkChange={setIsConnected} />
       </ScrollView>
-      {isPredicting && <LoadingOverlay style={styles.overlay} />}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -141,6 +127,7 @@ export default ImgRecogScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#FBF6EE",
   },
   contentContainer: {
     flexGrow: 1,

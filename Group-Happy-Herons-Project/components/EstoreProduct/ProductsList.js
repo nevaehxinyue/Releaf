@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React, { useEffect, useState, View } from "react";
+import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 
 import { Product } from "./Product.js";
 import { getProducts } from "./ProductsService.js";
+import EcoStoreHeader from "./EcoStoreHeader.js";
 
 export function ProductsList({ navigation }) {
   function renderProduct({ item: product }) {
     return (
+     
       <Product
         {...product}
         onPress={() => {
@@ -15,6 +17,7 @@ export function ProductsList({ navigation }) {
           });
         }}
       />
+     
     );
   }
 
@@ -25,6 +28,9 @@ export function ProductsList({ navigation }) {
   });
 
   return (
+    <SafeAreaView className=" bg-[#FBF6EE]">
+    <EcoStoreHeader />
+    
     <FlatList
       style={styles.productsList}
       contentContainerStyle={styles.productsListContainer}
@@ -32,6 +38,8 @@ export function ProductsList({ navigation }) {
       data={products}
       renderItem={renderProduct}
     />
+    </SafeAreaView>
+  
   );
 }
 
@@ -40,8 +48,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#eeeeee",
   },
   productsListContainer: {
-    backgroundColor: "#eeeeee",
+    backgroundColor: "#FBF6EE",
     paddingVertical: 8,
     marginHorizontal: 8,
+   
+
   },
 });

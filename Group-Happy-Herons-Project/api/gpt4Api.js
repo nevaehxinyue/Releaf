@@ -11,6 +11,7 @@ async function sendImageToOpenAI(imageBase64) {
     throw new Error("No image provided");
   };
 
+
   const headers = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.OPEN_AI_API_KEY}` 
@@ -24,7 +25,7 @@ async function sendImageToOpenAI(imageBase64) {
         content: [
           {
             type: "text",
-            text: "Based on the lates rules to get rid of rubbish in New Zealand, please list the steps to get rid of this item in the picture with only three short and concise bullet points. Don't give the source of your answer.",
+            text: "You are a recycling AI assistant. Please provide disposal instructions for the item shown in the picture according to the latest recycling rules in New Zealand. Format your response in two parts, separated by '*'. The first part should contain only the name of the appropriate disposal method, chosen from 'Rubbish Bin', 'Recycling Bin', 'Kitchen Bin', or other specific options such as 'Special Recycling' or 'Donation Centers'. The second part should include very brief instructions, not exceeding 25 words, on how to properly dispose of the item using the selected method. Separate each sentence in the second part with a new line",
           },
           {
             type: "image_url",
