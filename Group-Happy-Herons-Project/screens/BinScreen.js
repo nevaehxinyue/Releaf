@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Platform,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { getWasteBinData } from "../components/FetchData.js";
@@ -66,7 +67,7 @@ function BinScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <BinsScreenHeader selectedBin={selectedBin} />
-      <View>
+      <View style={{ marginTop: Platform.OS === 'ios' ? 0: 20}}>
         <Text className="text-[24px] font-semibold">Tap a bin</Text>
       </View>
       <View style={styles.imagesContainer}>
@@ -143,15 +144,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FBF6EE", // Set background color to white
   },
   lottieStyle: {
-    width: 150,
-    height: 150,
+    width: 140,
+    height: 140,
   },
   imagesContainer: {
     flexDirection: "row",
-    width: "100%", // Make sure it spans the full width
+    width: 'auto', // Make sure it spans the full width
     justifyContent: "space-between",
     marginBottom: 20,
-    right: 7,
   },
   wasteListContainer: {
     flexDirection: "row",

@@ -7,7 +7,7 @@ const MapScreenHeader = () => {
     
       <View className=" h-[70] flex-row items-start justify-start mr-[150]">
         <FontAwesome5 name="map-marked-alt" size={28} color="black" />
-        <Text className="left-2 text-[24px] font-bold ">Clothing Recycling</Text>
+        <Text className="left-2 text-[22px] font-bold ">Clothing Recycling</Text>
 
       </View>
    
