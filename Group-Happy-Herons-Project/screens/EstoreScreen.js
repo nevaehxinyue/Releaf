@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { ProductsList } from "../components/EstoreProduct/ProductsList.js";
@@ -23,7 +23,7 @@ function Estore() {
         name="ProductDetails"
         component={ProductDetails}
         options={({ navigation }) => ({
-          presentation: 'modal',
+          presentation: Platform.OS === 'ios' ? 'modal' : 'card',
           title: "Product details",
           headerShown: false,
         })}

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
@@ -13,8 +13,11 @@ import { Feather } from "@expo/vector-icons";
 import MapScreenHeader from "../components/MapScreen/MapScreenHeader"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+const windowWidth = Dimensions.get("window").width;
 
 const MapScreen = () => {
+
+  
   // default region
   const [region, setRegion] = useState({
     latitude: -36.856331419193694,
@@ -79,6 +82,7 @@ const MapScreen = () => {
       <MapScreenHeader />
 
        {/* toggle button */}
+       <ScrollView className='w-full'>
        <View className="flex-row items-center justify-center mt-4 mb-8 rounded-lg shadow-xl">
         <TouchableOpacity
           onPress={toggleOption}
@@ -113,9 +117,10 @@ const MapScreen = () => {
 
       
       {/* map display */}
-      <View className="border-2 border-gray-300 w-[380] h-[450] rounded-3xl overflow-hidden shadow-lg">
+      {/* className="border-2 border-gray-300 rounded-3xl overflow-hidden shadow-lg" */}
+  
       <MapView
-        className="w-full h-full"
+        className="w-full h-[400px]"
         provider={PROVIDER_GOOGLE}
         region={region}
         onRegionChangeComplete={onRegionChange}
@@ -124,7 +129,7 @@ const MapScreen = () => {
         {showLocationsOfDonations()} */}
         {showLocations()}
       </MapView>
-      </View>
+
 
        {/* notes for the user */}
        <View className="items-start justify-center space-y-2 mb-4 mt-4 mr-14">
@@ -141,10 +146,8 @@ const MapScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-     
-
-      
-
+      <View className="h-20"></View>
+      </ScrollView>
      
     </SafeAreaView>
   );

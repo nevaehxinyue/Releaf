@@ -104,10 +104,9 @@ function ImgRecogScreen({ model }) {
           </View>
         </View>
         {/* //Submit button */}
+      
 
-        <View className="flex-1 items-center justify-center top-[90px]">
-    
-          {/* <LoadingAnimation /> */}
+        <View className="flex-1 items-center justify-center top-[70px]">
 
           <AIResponse
             isPredicting={isPredicting}
@@ -116,8 +115,11 @@ function ImgRecogScreen({ model }) {
             prediciton={prediction}
           />
         </View>
+        <View className="h-30"></View>
 
       </ScrollView>
+   
+
     </SafeAreaView>
   );
 }
