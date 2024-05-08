@@ -4,7 +4,6 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
 
 const AIResponse = ({ isConnected, isPredicting, response, prediciton }) => {
-  const [resultShown, setResultShown] = useState(false);
   const responseTitile = response[0];
   const responseDetails = response[1];
   if (isPredicting)
