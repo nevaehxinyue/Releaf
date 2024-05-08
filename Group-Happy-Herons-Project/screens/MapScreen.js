@@ -12,7 +12,6 @@ import {
 import MapScreenHeader from "../components/MapScreen/MapScreenHeader";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-
 const MapScreen = () => {
   // default region
   const [region, setRegion] = useState({
