@@ -13,7 +13,9 @@ This application is built with React Native and incorporates Tailwind CSS for st
 <br>
 
 ## Architecture
-![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/assets/151484982/ccacf850-f7bd-43ee-aab6-d9fdfdb595f8)
+
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/assets/151484982/1ea3291f-703f-4e94-9f7a-8efe81d295c1)
+
 
 <br>
 
