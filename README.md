@@ -1,11 +1,7 @@
 # Group Project: A Mobile App Focusing on Recycling Solutions
 
-<br>
-<br>
-
 ## Overview
 Welcome to the GitHub repository for the Happy Herons team's project! Our project aims to enhance the recycling experience in New Zealand, especially for international newcomers. This app simplifies the recycling process by providing a user-friendly platform that guides users in properly disposing of their waste, and help them navigate through clothing recycling and donation locations in Auckland and latest recycling tips. Additionally, the app allows users to browse eco-friendly products.
-<br>
 <br>
 
 This application is built with React Native and incorporates Tailwind CSS for styling. Key features include image recognition powered by a machine learning model and ChatGPT4 Turbo API for disposal instructions under online and offline modes, an interactive map, utilizing React Native Maps library, for displaying key clothing recyling locations, and recycling tips based on latest recyling policies. Moreover, our app employes Jest for robust unit testing to improve reliabilty and performance. 
@@ -14,9 +10,12 @@ This application is built with React Native and incorporates Tailwind CSS for st
 
 ![alt text](image-1.png)
 
-## Application Architecture
+<br>
+
+## Architecture
 ![alt text](image-2.png)
 
+<br>
 
 ## Installation
 
@@ -36,12 +35,10 @@ The iOS Simulator is a tool within Xcode that allows developers to test and debu
 The Android Emulator is a tool within the Android Studio that allows developers to test and debug Android applications on Macs or Windows.
 1. **Install Android Studio:** Download and install [Android Studio](https://developer.android.com/studio).
 2. **Open Android Studio:** Go to `Configure > Virtual Device Manager`, and select `Pixel 7a API 34` from the list.
-<br>
 
 >**For Mobile Phone Users:** 
 >- Install the Expo Go app on an iPhone 12 Pro Max or newer, or on a Pixel 7a or newer Android device, for compatibility reasons. Then, scan the QR code generated after starting the app.
 >- Ensure your mobile phone and computer are connected to the same Wi-Fi network. Also, confirm that you have granted the Expo Go app Local Network permission in your device's settings app. Alternatively, consider using the tunnel connection option if connectivity issues persist.
-<br>
 <br>
 
 ### Cloning the Repository
@@ -70,11 +67,13 @@ If everything is set up *correctly*, the application should appear in your *iOS 
 >The videos below demonstrate how the application operates on an iOS mobile device and an Android emulator.
 
 <b>iOS Mobile Device</b>: 
-<br>
+
+https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/assets/151484982/3efaff9b-286e-4da8-921d-a435fb027fab
+
 <b>Android Emulator</b>: 
 
+https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/assets/151484982/2b9f4e55-24aa-4979-b894-274e7848ce62
 
-<br>
 <br>
 
 ## Technologies Used
@@ -86,13 +85,17 @@ Our app is built on Expo, which is a framework built around React Native and ena
 
 This section of our project describes the integration of TensorFlow.js with React Native for offline image recognition, and the utilization of the ChatGPT API for online information retrieval. The functionality facilitates rubbish classification and provides users with detailed information about identified items.And the modes are controlled by users and internet connections.
 
-<b>Image Selection Process:</b> Before processing any images for classification, users must select an image either from their device's camera or from their photo library. This functionality is managed by the UploadOptions component and uses  `expo-image-picker` library to facilitate image capturing and selection.
+<b>Image Selection Process</b> 
+
+Before processing any images for classification, users must select an image either from their device's camera or from their photo library. This functionality is managed by the UploadOptions component and uses  `expo-image-picker` library to facilitate image capturing and selection.
 
 - Camera Access: Allows users to take a new photo using their device's camera.
 - Library Access: Users can select an existing photo from their device's media library.
 - Permissions: Automatically requests and checks necessary permissions for camera and library access.
 
-<b>Offline Mode</b>: The TensorFlow.js model is used within the React Native app to classify images of rubbish directly on the user's device, operating fully offline.
+<b>Offline Mode</b>
+
+The TensorFlow.js model is used within the React Native app to classify images of rubbish directly on the user's device, operating fully offline.
 
 - TensorFlow.js is integrated using the `@tensorflow/tfjs-react-native` adapter, allowing the machine learning model to run directly on mobile devices without needing internet access.
 
@@ -100,7 +103,7 @@ This section of our project describes the integration of TensorFlow.js with Reac
 
 The model is loaded asynchronolously when the app starts and the useModel hook (as shown below) initializes TensorFlow.js, loads the model from local assets, and sets up the model for use in the app.
 
-#### Online Mode
+<b> Online Mode </b>
 
 In online mode, the application uses the OpenAI GPT-4 Turbo model to provide detailed disposal instructions for identified items. This feature requires an internet connection and utilizes the ChatGPT API to process images and return actionable information based on the image content.
 
@@ -140,7 +143,6 @@ In this project, unit testing is included to ensure the proper functioning of co
 In the Map and Marker section, our primary goal is to ensure that the components render without crashing and that the map and markers are displayed as expected. In the Recycling Tips section, our goal is to ensure components on the Recycling Tips screen display the correct waste bin data. In the Eco Store section, we implemented tests to ensure the product list loads and displays correctly and clicking on a product card will navigate to the corresponding detail page.
 
 The configuration for jest-expo is specified in the `jest.config.js` file, which sets the preset and module name mapper for the project. The test files are located in the `__tests__` directory, with each component having its own test file. For instance, the `MapScreen.test.js` file contains test cases specifically for the MapScreen component.
-
 <br>
 <br>
 
@@ -178,11 +180,8 @@ For the convenience of interacting with the server, we deployed the server on AW
 - Commit Logs: Our commit logs reflect regular contributions from all team members. Each commit clearly describes the implemented changes, ensuring traceability and transparency.
 
 - Peer Reviews: Each piece of code was peer-reviewed, fostering knowledge sharing and collective code ownership.
-
 <br>
-<br>
-
-
+  
 ## Authors - Team Happy Herons
 [Xiangnan Lu](https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/tree/ImgR), 
 [Zheyang Cao](https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/tree/database), 
