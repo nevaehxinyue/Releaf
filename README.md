@@ -21,6 +21,15 @@ This application is built with React Native and incorporates Tailwind CSS for st
 
 ## Installation
 
+### Special Attention Required:
+- Expo SDK Compatibility: We have observed that the recently released Expo SDK 51, as of May 9th, exhibits stability issues with our application. We recommend using Expo Go version 50 for running this application.
+- Running Application Recommendations: Considering the current stability issues, we advise using an iOS simulator or Android emulator to run and test the application, rather than physical mobile devices.
+- Download Instructions: Please refer to the screenshot below for guidance on how to download [Expo Go SDK 50](https://expo.dev/go) on iOS simulators and Android emulators.
+<img src="https://github.com/UOA-CS732-SE750-Students-2024/project-group-happy-herons/assets/126741953/aac6de0a-37b1-4456-af34-be2fb179f358" width="566" height="500">
+
+Thank you for your understanding. We will update our app to be compatible with SDK 51 once it has proven stable for use.
+<br>
+
 ### Prerequisite
 Ensure you have the following installed:
 - [Node.js](https://nodejs.org/en/)
@@ -36,13 +45,7 @@ The iOS Simulator is a tool within Xcode that allows developers to test and debu
 #### Android Emulator:
 The Android Emulator is a tool within the Android Studio that allows developers to test and debug Android applications on Macs or Windows.
 1. **Install Android Studio:** Download and install [Android Studio](https://developer.android.com/studio).
-2. **Open Android Studio:** Go to `Configure > Virtual Device Manager`, and select `Pixel 7a API 34` from the list.
-
->**For Mobile Phone Users:** 
->- Install the Expo Go app on an iPhone 12 Pro Max or newer, or on a Pixel 7a or newer Android device, for compatibility reasons. Then, scan the QR code generated after starting the app.
->- Ensure your mobile phone and computer are connected to the same Wi-Fi network. Also, confirm that you have granted the Expo Go app Local Network permission in your device's settings app. Alternatively, consider using the tunnel connection option if connectivity issues persist.
-<br>
-
+2. **Open Android Studio:** Go to `Configure > Virtual Device Manager`, and select `Pixel 7a API 34` from the list.<br>
 ### Cloning the Repository
 To clone the repository, use the following command:
 ```bash
